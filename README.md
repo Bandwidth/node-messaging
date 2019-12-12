@@ -47,6 +47,50 @@ The singleton instance of the ``` APIController ``` class can be accessed from t
 var controller = lib.APIController;
 ```
 
+### <a name="create_message"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.createMessage") createMessage
+
+> createMessage
+
+
+```javascript
+function createMessage(userId, body, callback)
+```
+#### Parameters
+
+| Parameter | Tags | Description |
+|-----------|------|-------------|
+| userId |  ``` Required ```  | TODO: Add a parameter description |
+| body |  ``` Optional ```  | TODO: Add a parameter description |
+
+
+
+#### Example Usage
+
+```javascript
+
+    var userId = 'userId';
+    var body = new BandwidthMessaging.MessageRequest({"key":"value"});
+
+    controller.createMessage(userId, body, function(error, response, context) {
+
+    
+    });
+```
+
+#### Errors
+
+| Error Code | Error Description |
+|------------|-------------------|
+| 400 | 400 Request is malformed or invalid |
+| 401 | 401 The specified user does not have access to the account |
+| 403 | 403 The user does not have access to this API |
+| 404 | 404 Path not found |
+| 415 | 415 The content-type of the request is incorrect |
+| 429 | 429 The rate limit has been reached |
+
+
+
+
 ### <a name="list_media"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.listMedia") listMedia
 
 > listMedia
@@ -211,50 +255,6 @@ function deleteMedia(userId, mediaId, callback)
     var mediaId = 'mediaId';
 
     controller.deleteMedia(userId, mediaId, function(error, response, context) {
-
-    
-    });
-```
-
-#### Errors
-
-| Error Code | Error Description |
-|------------|-------------------|
-| 400 | 400 Request is malformed or invalid |
-| 401 | 401 The specified user does not have access to the account |
-| 403 | 403 The user does not have access to this API |
-| 404 | 404 Path not found |
-| 415 | 415 The content-type of the request is incorrect |
-| 429 | 429 The rate limit has been reached |
-
-
-
-
-### <a name="create_message"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.createMessage") createMessage
-
-> createMessage
-
-
-```javascript
-function createMessage(userId, body, callback)
-```
-#### Parameters
-
-| Parameter | Tags | Description |
-|-----------|------|-------------|
-| userId |  ``` Required ```  | TODO: Add a parameter description |
-| body |  ``` Optional ```  | TODO: Add a parameter description |
-
-
-
-#### Example Usage
-
-```javascript
-
-    var userId = 'userId';
-    var body = new BandwidthMessaging.MessageRequest({"key":"value"});
-
-    controller.createMessage(userId, body, function(error, response, context) {
 
     
     });
