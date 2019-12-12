@@ -21,11 +21,11 @@ In order to setup authentication in the API client, you need the following infor
 API client can be initialized as following:
 
 ```JavaScript
-const lib = require('@bandwidth/messaging');
+const BandwidthMessaging = require('@bandwidth/messaging');
 
 // Configuration parameters and credentials
-lib.Configuration.basicAuthUserName = "basicAuthUserName"; // The username to use with basic authentication
-lib.Configuration.basicAuthPassword = "basicAuthPassword"; // The password to use with basic authentication
+BandwidthMessaging.Configuration.basicAuthUserName = "basicAuthUserName"; // The username to use with basic authentication
+BandwidthMessaging.Configuration.basicAuthPassword = "basicAuthPassword"; // The password to use with basic authentication
 
 ```
 
@@ -149,10 +149,8 @@ function getMedia(userId, mediaId, callback)
     var userId = 'userId';
     var mediaId = 'mediaId';
 
-    TestHelper.getFileContents('url', function(data) {
-        controller.getMedia(userId, mediaId, function(error, response, context) {
+    controller.getMedia(userId, mediaId, function(error, response, context) {
 
-        });
     });
 ```
 
@@ -288,7 +286,7 @@ function createMessage(userId, body, callback)
 ```javascript
 
     var userId = 'userId';
-    var body = new lib.MessageRequest({"key":"value"});
+    var body = new BandwidthMessaging.MessageRequest({"key":"value"});
 
     controller.createMessage(userId, body, function(error, response, context) {
 
