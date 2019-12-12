@@ -47,40 +47,6 @@ The singleton instance of the ``` APIController ``` class can be accessed from t
 var controller = lib.APIController;
 ```
 
-### <a name="get_message"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.getMessage") getMessage
-
-> getMessage
-
-
-```javascript
-function getMessage(callback)
-```
-
-#### Example Usage
-
-```javascript
-
-
-    controller.getMessage(function(error, response, context) {
-
-    
-    });
-```
-
-#### Errors
-
-| Error Code | Error Description |
-|------------|-------------------|
-| 400 | 400 Request is malformed or invalid |
-| 401 | 401 The specified user does not have access to the account |
-| 403 | 403 The user does not have access to this API |
-| 404 | 404 Path not found |
-| 415 | 415 The content-type of the request is incorrect |
-| 429 | 429 The rate limit has been reached |
-
-
-
-
 ### <a name="list_media"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.listMedia") listMedia
 
 > listMedia
