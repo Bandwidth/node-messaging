@@ -24,8 +24,8 @@ API client can be initialized as following:
 const BandwidthMessaging = require('@bandwidth/messaging');
 
 // Configuration parameters and credentials
-BandwidthMessaging.Configuration.basicAuthUserName = "basicAuthUserName"; // The username to use with basic authentication
-BandwidthMessaging.Configuration.basicAuthPassword = "basicAuthPassword"; // The password to use with basic authentication
+BandwidthMessaging.Configuration.basicAuthUserName = "apitoken"; // The username to use with basic authentication
+BandwidthMessaging.Configuration.basicAuthPassword = "apisecret"; // The password to use with basic authentication
 
 ```
 
