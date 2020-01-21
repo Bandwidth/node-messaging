@@ -44,7 +44,7 @@ BandwidthMessaging.Configuration.basicAuthPassword = "apisecret"; // The passwor
 The singleton instance of the ``` APIController ``` class can be accessed from the API Client.
 
 ```javascript
-var controller = lib.APIController;
+var controller = BandwidthMessaging.APIController;
 ```
 
 ### <a name="create_message"></a>![Method: ](https://apidocs.io/img/method.png ".APIController.createMessage") createMessage
