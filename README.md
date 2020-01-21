@@ -1,5 +1,9 @@
 # Getting started
 
+## Other Node SDKs
+* Numbers: https://github.com/Bandwidth/node-numbers
+* Voice: https://github.com/Bandwidth/node-voice
+
 ## Installation
 
 ```bash
