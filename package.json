@@ -1,6 +1,6 @@
 {
   "name": "@bandwidth/messaging",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Bandwidth's HTTP Messaging platform",
   "main": "./lib/index.js",
   "repository": {
@@ -8,8 +8,7 @@
     "url": "git://github.com/bandwidth/node-messaging.git"
   },
   "scripts": {
-    "lint": "eslint lib",
-    "test": "mocha --recursive"
+    "lint": "eslint lib"
   },
   "author": "APIMATIC SDK Generator",
   "bugs": {
@@ -21,13 +20,12 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3",
-    "mocha": "^5.2.0",
-    "chai": "^3.5.0"
+    "eslint-plugin-react": "^6.10.3"
   },
   "dependencies": {
     "moment": "^2.17.1",
-    "request": "^2.55.0"
+    "request": "^2.55.0",
+    "fs": "0.0.1-security"
   },
   "eslintConfig": {
     "extends": "airbnb",
