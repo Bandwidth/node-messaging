@@ -1,6 +1,6 @@
 {
   "name": "@bandwidth/messaging",
-  "version": "2.0.1",
+  "version": "2.0.3",
   "description": "Bandwidth's HTTP Messaging platform",
   "main": "./lib/index.js",
   "repository": {
