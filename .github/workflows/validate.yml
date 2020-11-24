@@ -13,6 +13,6 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v2
     - name: Setup Node
-      uses: uses: actions/setup-node
+      uses: actions/setup-node
     - name: NPM Install
       run: npm install
