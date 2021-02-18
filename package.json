@@ -1,47 +1,52 @@
 {
-  "name": "@bandwidth/messaging",
-  "version": "2.0.4",
-  "description": "Bandwidth's HTTP Messaging platform",
-  "main": "./lib/index.js",
-  "repository": {
-    "type": "git",
-    "url": "git://github.com/bandwidth/node-messaging.git"
+  "version": "3.0.0-beta",
+  "license": "MIT",
+  "sideEffects": false,
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "module": "dist/bandwidthlib-messaging.esm.js",
+  "files": [
+    "dist",
+    "src"
+  ],
+  "engines": {
+    "node": ">=10"
   },
   "scripts": {
-    "lint": "eslint lib"
+    "build": "tsdx build",
+    "test": "tsdx test --passWithNoTests",
+    "lint": "tsdx lint src",
+    "prepare": "tsdx build"
   },
+  "peerDependencies": {},
+  "prettier": {
+    "printWidth": 80,
+    "semi": true,
+    "singleQuote": true,
+    "trailingComma": "es5"
+  },
+  "name": "@bandwidth/messaging",
+  "description": "Bandwidth's HTTP Messaging platform",
   "author": "APIMATIC SDK Generator",
-  "bugs": {
-    "email": "support@apimatic.io"
-  },
-  "license": "MIT",
   "devDependencies": {
-    "eslint": "^3.18.0",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
+    "@types/detect-node": "^2.0.0",
+    "@types/lodash.flatmap": "^4.5.6",
+    "abort-controller": "^3.0.0",
+    "stream-equal": "^2.0.1",
+    "tsdx": "^0.14.1",
+    "tslib": "^2.1.0",
+    "typescript": "^3.9.7"
   },
   "dependencies": {
-    "moment": "^2.17.1",
-    "request": "^2.55.0",
-    "fs": "0.0.1-security"
+    "@apimatic/schema": "^0.4.1",
+    "@types/node": "^14.14.27",
+    "axios": "^0.21.1",
+    "detect-node": "^2.0.4",
+    "form-data": "^3.0.0",
+    "lodash.flatmap": "^4.5.0",
+    "tiny-warning": "^1.0.3"
   },
-  "eslintConfig": {
-    "extends": "airbnb",
-    "env": {
-      "commonjs": true,
-      "node": true,
-      "mocha": true
-    },
-    "rules": {
-      "indent": [
-        "error",
-        4
-      ],
-      "no-underscore-dangle": 0,
-      "strict": 0,
-      "prefer-rest-params": 0
-    }
+  "bugs": {
+    "email": "support@apimatic.io"
   }
 }
