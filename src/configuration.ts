@@ -9,7 +9,6 @@ export interface Configuration {
   timeout: number;
   environment: Environment;
   baseUrl: string;
-  baseUrl: string;
   basicAuthUserName: string;
   basicAuthPassword: string;
   unstable_httpClientOptions?: any;

@@ -14,7 +14,7 @@
   },
   "scripts": {
     "build": "tsdx build",
-    "test": "tsdx test",
+    "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint src",
     "prepare": "tsdx build"
   },
@@ -25,7 +25,7 @@
     "singleQuote": true,
     "trailingComma": "es5"
   },
-  "name": "bandwidthlib-messaging",
+  "name": "@bandwidth/messaging",
   "description": "Bandwidth's HTTP Messaging platform",
   "author": "APIMATIC SDK Generator",
   "devDependencies": {
