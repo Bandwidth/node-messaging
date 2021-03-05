@@ -7,11 +7,11 @@
 import { ApiError } from './apiError';
 
 /**
- * Creates an instance of MessagingException
+ * Creates an instance of MessagingExceptionError
  */
-interface MessagingException {
+interface MessagingExceptionError {
   type: string;
   description: string;
 }
 
-export class MessagingExceptionError extends ApiError<MessagingException> {}
+export class MessagingExceptionErrorError extends ApiError<MessagingExceptionError> {}
