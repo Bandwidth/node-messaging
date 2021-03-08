@@ -11,6 +11,7 @@ export const DEFAULT_CONFIGURATION: Configuration = {
   timeout: 0,
   environment: Environment.Production,
   baseUrl: 'https://www.example.com',
+  baseUrl: 'https://www.example.com',
   basicAuthUserName: 'TODO access token',
   basicAuthPassword: 'TODO access token',
 };

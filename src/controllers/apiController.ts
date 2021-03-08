@@ -25,22 +25,22 @@ export class ApiController extends BaseController {
   /**
    * listMedia
    *
-   * @param userId             User's account ID
+   * @param accountId          User's account ID
    * @param continuationToken  Continuation token used to retrieve subsequent media.
    * @return Response from the API call
    */
   async listMedia(
-    userId: string,
+    accountId: string,
     continuationToken?: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<Media[]>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       continuationToken: [continuationToken, optional(string())],
     });
     req.header('Continuation-Token', mapped.continuationToken);
-    req.appendTemplatePath`/users/${mapped.userId}/media`;
+    req.appendTemplatePath`/users/${mapped.accountId}/media`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
@@ -53,21 +53,21 @@ export class ApiController extends BaseController {
   /**
    * getMedia
    *
-   * @param userId  User's account ID
-   * @param mediaId Media ID to retrieve
+   * @param accountId User's account ID
+   * @param mediaId   Media ID to retrieve
    * @return Response from the API call
    */
   async getMedia(
-    userId: string,
+    accountId: string,
     mediaId: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<NodeJS.ReadableStream | Blob>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       mediaId: [mediaId, string()],
     });
-    req.appendTemplatePath`/users/${mapped.userId}/media/${mapped.mediaId}`;
+    req.appendTemplatePath`/users/${mapped.accountId}/media/${mapped.mediaId}`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
@@ -80,19 +80,17 @@ export class ApiController extends BaseController {
   /**
    * uploadMedia
    *
-   * @param userId         User's account ID
-   * @param mediaId        The user supplied custom media ID
-   * @param contentLength  The size of the entity-body
+   * @param accountId     User's account ID
+   * @param mediaId       The user supplied custom media ID
    * @param body
-   * @param contentType    The media type of the entity-body
-   * @param cacheControl   General-header field is used to specify directives that MUST be obeyed by
-   *                                      all caching mechanisms along the request/response chain.
+   * @param contentType   The media type of the entity-body
+   * @param cacheControl  General-header field is used to specify directives that MUST be obeyed by all
+   *                                     caching mechanisms along the request/response chain.
    * @return Response from the API call
    */
   async uploadMedia(
-    userId: string,
+    accountId: string,
     mediaId: string,
-    contentLength: number,
     body: FileWrapper,
     contentType?: string,
     cacheControl?: string,
@@ -100,17 +98,15 @@ export class ApiController extends BaseController {
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('PUT');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       mediaId: [mediaId, string()],
-      contentLength: [contentLength, number()],
       contentType: [contentType, optional(string())],
       cacheControl: [cacheControl, optional(string())],
     });
-    req.header('Content-Length', mapped.contentLength);
     req.header('Content-Type', mapped.contentType);
     req.header('Cache-Control', mapped.cacheControl);
     req.stream(body);
-    req.appendTemplatePath`/users/${mapped.userId}/media/${mapped.mediaId}`;
+    req.appendTemplatePath`/users/${mapped.accountId}/media/${mapped.mediaId}`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
@@ -123,21 +119,21 @@ export class ApiController extends BaseController {
   /**
    * deleteMedia
    *
-   * @param userId  User's account ID
-   * @param mediaId The media ID to delete
+   * @param accountId User's account ID
+   * @param mediaId   The media ID to delete
    * @return Response from the API call
    */
   async deleteMedia(
-    userId: string,
+    accountId: string,
     mediaId: string,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<void>> {
     const req = this.createRequest('DELETE');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       mediaId: [mediaId, string()],
     });
-    req.appendTemplatePath`/users/${mapped.userId}/media/${mapped.mediaId}`;
+    req.appendTemplatePath`/users/${mapped.accountId}/media/${mapped.mediaId}`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
@@ -150,13 +146,13 @@ export class ApiController extends BaseController {
   /**
    * getMessages
    *
-   * @param userId        User's account ID
+   * @param accountId     User's account ID
    * @param messageId     The ID of the message to search for. Special characters need to be encoded using
    *                                URL encoding
    * @param sourceTn      The phone number that sent the message
    * @param destinationTn The phone number that received the message
    * @param messageStatus The status of the message. One of RECEIVED, QUEUED, SENDING, SENT, FAILED,
-   *                                DELIVERED, DLR_EXPIRED
+   *                                DELIVERED, ACCEPTED, UNDELIVERED
    * @param errorCode     The error code of the message
    * @param fromDateTime  The start of the date range to search in ISO 8601 format. Uses the message receive
    *                                time. The date range to search in is currently 14 days.
@@ -168,7 +164,7 @@ export class ApiController extends BaseController {
    * @return Response from the API call
    */
   async getMessages(
-    userId: string,
+    accountId: string,
     messageId?: string,
     sourceTn?: string,
     destinationTn?: string,
@@ -182,7 +178,7 @@ export class ApiController extends BaseController {
   ): Promise<ApiResponse<BandwidthMessagesList>> {
     const req = this.createRequest('GET');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       messageId: [messageId, optional(string())],
       sourceTn: [sourceTn, optional(string())],
       destinationTn: [destinationTn, optional(string())],
@@ -202,7 +198,7 @@ export class ApiController extends BaseController {
     req.query('toDateTime', mapped.toDateTime);
     req.query('pageToken', mapped.pageToken);
     req.query('limit', mapped.limit);
-    req.appendTemplatePath`/users/${mapped.userId}/messages`;
+    req.appendTemplatePath`/users/${mapped.accountId}/messages`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
@@ -215,22 +211,22 @@ export class ApiController extends BaseController {
   /**
    * createMessage
    *
-   * @param userId User's account ID
+   * @param accountId User's account ID
    * @param body
    * @return Response from the API call
    */
   async createMessage(
-    userId: string,
+    accountId: string,
     body: MessageRequest,
     requestOptions?: RequestOptions
   ): Promise<ApiResponse<BandwidthMessage>> {
     const req = this.createRequest('POST');
     const mapped = req.prepareArgs({
-      userId: [userId, string()],
+      accountId: [accountId, string()],
       body: [body, messageRequestSchema],
     });
     req.json(mapped.body);
-    req.appendTemplatePath`/users/${mapped.userId}/messages`;
+    req.appendTemplatePath`/users/${mapped.accountId}/messages`;
     req.throwOn(400, MessagingExceptionError, '400 Request is malformed or invalid');
     req.throwOn(401, MessagingExceptionError, '401 The specified user does not have access to the account');
     req.throwOn(403, MessagingExceptionError, '403 The user does not have access to this API');
