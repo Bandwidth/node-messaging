@@ -10,6 +10,10 @@ jobs:
   deploy:
     name: Validate and Test 
     runs-on: ubuntu-latest
+    env:
+      BANDWIDTH_ACCOUNT_ID: ${{ secrets.BANDWIDTH_ACCOUNT_ID }}
+      BANDWIDTH_USERNAME: ${{ secrets.BANDWIDTH_USERNAME }}
+      BANDWIDTH_PASSWORD: ${{ secrets.BANDWIDTH_PASSWORD }}
     steps:
     - name: Checkout
       uses: actions/checkout@v2
