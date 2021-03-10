@@ -9,9 +9,10 @@ import { ApiError } from './apiError';
 /**
  * Creates an instance of MessagingException
  */
-interface MessagingException {
+ interface MessagingException {
   type: string;
   description: string;
 }
 
 export class MessagingExceptionError extends ApiError<MessagingException> {}
+

@@ -1,5 +1,5 @@
 {
-  "version": "3.0.0-beta",
+  "version": "1.0.0",
   "license": "MIT",
   "sideEffects": false,
   "main": "dist/index.js",
@@ -29,7 +29,9 @@
   "description": "Bandwidth's HTTP Messaging platform",
   "author": "APIMATIC SDK Generator",
   "devDependencies": {
+    "@babel/core": "^7.13.8",
     "@types/detect-node": "^2.0.0",
+    "@types/json-bigint": "^1.0.0",
     "@types/lodash.flatmap": "^4.5.6",
     "abort-controller": "^3.0.0",
     "stream-equal": "^2.0.1",
@@ -38,11 +40,11 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@apimatic/schema": "^0.4.1",
-    "@types/node": "^14.14.27",
+    "@apimatic/schema": "^0.5.1",
     "axios": "^0.21.1",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
+    "json-bigint": "^1.0.0",
     "lodash.flatmap": "^4.5.0",
     "tiny-warning": "^1.0.3"
   },

@@ -16,7 +16,7 @@ import { Configuration, Environment } from './configuration';
 import { DEFAULT_CONFIGURATION } from './defaultConfiguration';
 import { ApiError } from './errors/apiError';
 import { HttpClient } from './http/httpClient';
-import { pathTemplate } from './http/pathTemplate';
+import { pathTemplate, SkipEncode } from './http/pathTemplate';
 import {
   AuthenticatorInterface,
   createRequestBuilderFactory,
@@ -75,7 +75,7 @@ function getBaseUri(server: Server = 'MessagingDefault', config: Configuration):
   }
   if (config.environment === Environment.Custom) {
     if (server === 'MessagingDefault') {
-      return pathTemplate`${config.baseUrl}`;
+      return pathTemplate`${new SkipEncode(config.baseUrl)}`;
     }
   }
   throw new Error('Could not get Base URL. Invalid environment or server.');

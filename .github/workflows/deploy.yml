@@ -19,6 +19,10 @@ jobs:
         node-version: '12.x'
         registry-url: 'https://registry.npmjs.org'
     - name: Build and test npm package
+      env:
+        BANDWIDTH_ACCOUNT_ID: ${{ secrets.BANDWIDTH_ACCOUNT_ID }}
+        BANDWIDTH_USERNAME: ${{ secrets.BANDWIDTH_USERNAME }}
+        BANDWIDTH_PASSWORD: ${{ secrets.BANDWIDTH_PASSWORD }}
       run: |
            npm install
            npm run build
