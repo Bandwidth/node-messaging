@@ -27,12 +27,12 @@ describe('messaging', () => {
     });
     
 
-    it('should throw error on invalid values', async () => {
-        const accountId = 'not-a-real-account-id';
+    it('should throw an error on an invalid to number', async () => {
+        const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
         const body = {
-            applicationId: 'not-a-real-application-id',
-            to: ['+1444'],
-            from: '+1555',
+            applicationId: process.env.MESSAGING_APPLICATION_ID,
+            to: ["+1invalid"],
+            from: process.env.PHONE_NUMBER_OUTBOUND,
             text: 'TS messaging test'
         };
 
