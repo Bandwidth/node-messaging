@@ -10,7 +10,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10.4.0"
+    "node": ">=10"
   },
   "scripts": {
     "build": "tsdx build",

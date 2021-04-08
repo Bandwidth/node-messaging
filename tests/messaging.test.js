@@ -15,15 +15,16 @@ describe('messaging', () => {
     
     it('should create message with proper values', async () => {
         const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
+        const applicationId = process.env.MESSAGING_APPLICATION_ID;
         const body = {
-            applicationId: process.env.MESSAGING_APPLICATION_ID,
+            applicationId: applicationId,
             to: [process.env.PHONE_NUMBER_INBOUND],
             from: process.env.PHONE_NUMBER_OUTBOUND,
             text: 'TS messaging test'
         };
 
         const createMessageResponse = await controller.createMessage(accountId, body);
-        expect(createMessageResponse.result.applicationId).toBeDefined();
+        expect(createMessageResponse.result.applicationId).toEqual(applicationId);
     });
     
 
