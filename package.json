@@ -10,7 +10,7 @@
     "src"
   ],
   "engines": {
-    "node": ">=10"
+    "node": ">=10.4.0"
   },
   "scripts": {
     "build": "tsdx build",
@@ -40,7 +40,7 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "@apimatic/schema": "^0.5.1",
+    "@apimatic/schema": "^0.6.0",
     "axios": "^0.21.1",
     "detect-node": "^2.0.4",
     "form-data": "^3.0.0",
