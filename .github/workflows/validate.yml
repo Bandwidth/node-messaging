@@ -24,4 +24,7 @@ jobs:
         BANDWIDTH_ACCOUNT_ID: ${{ secrets.BANDWIDTH_ACCOUNT_ID }}
         BANDWIDTH_USERNAME: ${{ secrets.BANDWIDTH_USERNAME }}
         BANDWIDTH_PASSWORD: ${{ secrets.BANDWIDTH_PASSWORD }}
+        MESSAGING_APPLICATION_ID: ${{ secrets.MESSAGING_APPLICATION_ID }}
+        PHONE_NUMBER_INBOUND: ${{ secrets.PHONE_NUMBER_INBOUND }}
+        PHONE_NUMBER_OUTBOUND: ${{ secrets.PHONE_NUMBER_OUTBOUND }}
       run: npm run test --if-present
