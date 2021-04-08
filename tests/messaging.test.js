@@ -1,4 +1,4 @@
-import { Client, ApiController, FileWrapperi, ApiError } from '../src';
+import { Client, ApiController, FileWrapperi, MessagingExceptionError, MessageRequest } from '../src';
 
 let controller;
 
@@ -12,30 +12,34 @@ beforeEach(() => {
 });
 
 describe('messaging', () => {
-    /*
+    
     it('should create message with proper values', async () => {
         const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
-        const body: MessageRequest = {
+        const body = {
             applicationId: process.env.MESSAGING_APPLICATION_ID,
-            to: string[] = [process.env.PHONE_NUMBER_INBOUND],
+            to: [process.env.PHONE_NUMBER_INBOUND],
             from: process.env.PHONE_NUMBER_OUTBOUND,
             text: 'TS messaging test'
         };
 
         const createMessageResponse = await controller.createMessage(accountId, body);
-        expect(createmessageResponse.result.applicationId).toBeDefined();
+        expect(createMessageResponse.result.applicationId).toBeDefined();
     });
-    */
+    
 
-    it('should catch error on invalid values', async () => {
-        const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
-        const body: MessageRequest = {
-            applicationId: process.env.MESSAGING_APPLICATION_ID,
-            to: string[] = [process.env.PHONE_NUMBER_INBOUND],
-            from: process.env.PHONE_NUMBER_OUTBOUND,
+    it('should throw error on invalid values', async () => {
+        const accountId = 'not-a-real-account-id';
+        const body = {
+            applicationId: 'not-a-real-application-id',
+            to: ['+1444'],
+            from: '+1555',
             text: 'TS messaging test'
         };
 
-        expect(async () => {await controller.createMessage(accountId, body)}).toThrow(ApiError);
+        const t = async () => {
+            await controller.createMessage(accountId, body);
+        }
+
+        expect(t).rejects.toThrow(MessagingExceptionError);
     });
 });
