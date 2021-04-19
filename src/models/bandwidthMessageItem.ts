@@ -29,6 +29,16 @@ export interface BandwidthMessageItem {
   receiveTime?: string;
   /** The name of the carrier. Not currently supported for MMS, coming soon */
   carrierName?: string;
+  /** The size of the message including message content and headers */
+  messageSize?: number;
+  /** The length of the message content */
+  messageLength?: number;
+  /** The number of attachments the message has */
+  attachmentCount?: number;
+  /** The number of recipients the message has */
+  recipientCount?: number;
+  /** The campaign class of the message, if it has one */
+  campaignClass?: string;
 }
 
 export const bandwidthMessageItemSchema: Schema<BandwidthMessageItem> = object({
@@ -43,4 +53,9 @@ export const bandwidthMessageItemSchema: Schema<BandwidthMessageItem> = object({
   errorCode: ['errorCode', optional(number())],
   receiveTime: ['receiveTime', optional(string())],
   carrierName: ['carrierName', optional(string())],
+  messageSize: ['messageSize', optional(number())],
+  messageLength: ['messageLength', optional(number())],
+  attachmentCount: ['attachmentCount', optional(number())],
+  recipientCount: ['recipientCount', optional(number())],
+  campaignClass: ['campaignClass', optional(string())],
 });
