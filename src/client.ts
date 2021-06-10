@@ -23,7 +23,7 @@ import {
   HttpClientInterface,
 } from './http/requestBuilder';
 
-const USER_AGENT = 'APIMATIC 2.0';
+const USER_AGENT = 'node-messaging';
 
 export class Client implements ClientInterface {
   private _config: Readonly<Configuration>;
