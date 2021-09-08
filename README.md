@@ -37,7 +37,7 @@ var body = {
 };
 
 var createMessageResponse = await controller.createMessage(accountId, body);
-console.log(createMessageResponse.result.messageId);
+console.log(createMessageResponse.result.id);
 ```
 
 ## Supported Node Versions
