@@ -4,8 +4,8 @@ let controller;
 
 beforeEach(() => {
     const client = new Client({
-        basicAuthUserName: process.env.BANDWIDTH_USERNAME,
-        basicAuthPassword: process.env.BANDWIDTH_PASSWORD
+        basicAuthUserName: process.env.BW_USERNAME,
+        basicAuthPassword: process.env.BW_PASSWORD
     });
 
     controller = new ApiController(client);
@@ -14,10 +14,10 @@ beforeEach(() => {
 describe('messaging', () => {
     
     it('should create message with proper values', async () => {
-        const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
-        const applicationId = process.env.MESSAGING_APPLICATION_ID;
-        const toPhoneNumber = process.env.PHONE_NUMBER_INBOUND;
-        const fromPhoneNumber = process.env.PHONE_NUMBER_OUTBOUND;
+        const accountId = process.env.BW_ACCOUNT_ID;
+        const applicationId = process.env.BW_MESSAGING_APPLICATION_ID;
+        const toPhoneNumber = process.env.USER_NUMBER;
+        const fromPhoneNumber = process.env.BW_NUMBER;
         const text = 'TS messaging test';
         const body = {
             applicationId: applicationId,
@@ -35,11 +35,11 @@ describe('messaging', () => {
     
 
     it('should throw an error on an invalid to number', async () => {
-        const accountId = process.env.BANDWIDTH_ACCOUNT_ID;
+        const accountId = process.env.BW_ACCOUNT_ID;
         const body = {
-            applicationId: process.env.MESSAGING_APPLICATION_ID,
+            applicationId: process.env.BW_MESSAGING_APPLICATION_ID,
             to: ["+1invalid"],
-            from: process.env.PHONE_NUMBER_OUTBOUND,
+            from: process.env.BW_NUMBER,
             text: 'TS messaging test'
         };
 
