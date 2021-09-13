@@ -36,3 +36,9 @@ jobs:
             npm publish --access public
       env:
         NODE_AUTH_TOKEN: ${{ secrets.NPM_AUTH_TOKEN }}
+    - uses: Bandwidth/build-notify-slack-action@v1.0.0
+      if: always()
+      with:
+        job-status: ${{ job.status }}
+        slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
+        slack-channel: ${{ secrets.SLACK_CHANNEL }}
