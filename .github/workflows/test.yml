@@ -1,4 +1,4 @@
-name: Validate and Test
+name: Test
 
 on:
   schedule:
@@ -7,19 +7,29 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy:
-    name: Validate and Test 
-    runs-on: ubuntu-latest
+  test:
+    name: Test 
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [windows-2016, windows-2019, ubuntu-18.04, ubuntu-20.04]
+        node-version: ['12', '14', '16']
     steps:
     - name: Checkout
       uses: actions/checkout@v2
+
     - name: Setup Node
-      uses: actions/setup-node@v1
-    - name: Install npm package
+      uses: actions/setup-node@v2
+      with:
+        node-version: ${{ matrix.node-version }}
+
+    - name: Install npm Package
       run: npm install
-    - name: Build npm package
+
+    - name: Build npm Package
       run: npm run build --if-present
-    - name: Test npm package
+
+    - name: Test npm Package
       env:
         BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
         BW_USERNAME: ${{ secrets.BW_USERNAME }}
@@ -28,8 +38,10 @@ jobs:
         BW_NUMBER: ${{ secrets.BW_NUMBER }}
         USER_NUMBER: ${{ secrets.USER_NUMBER }}
       run: npm run test --if-present
-    - uses: Bandwidth/build-notify-slack-action@v1.0.0
-      if: failure()
+
+    - name: Notify Slack of Failures
+      uses: Bandwidth/build-notify-slack-action@v1.0.0
+      if: failure() && !github.event.pull_request.draft
       with:
         job-status: ${{ job.status }}
         slack-bot-token: ${{ secrets.SLACK_BOT_TOKEN }}
