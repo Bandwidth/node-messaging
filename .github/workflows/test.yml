@@ -23,13 +23,13 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
 
-    - name: Install npm package
+    - name: Install npm Package
       run: npm install
 
-    - name: Build npm package
+    - name: Build npm Package
       run: npm run build --if-present
 
-    - name: Test npm package
+    - name: Test npm Package
       env:
         BW_ACCOUNT_ID: ${{ secrets.BW_ACCOUNT_ID }}
         BW_USERNAME: ${{ secrets.BW_USERNAME }}
