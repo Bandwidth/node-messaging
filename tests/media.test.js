@@ -16,7 +16,7 @@ describe('media', () => {
         const content = 'Hello world!';
     
         const accountId = process.env.BW_ACCOUNT_ID;
-        const mediaId = `${process.env.GITHUB_RUN_ID}-media-up-down`;
+        const mediaId = `Node-Test-Media_`.concat(Date.now); //append time in millis to avoid third-party GUID generator dependency
         const body = new FileWrapper(Buffer.from(content));
         const contentType = 'text/plain';
     
