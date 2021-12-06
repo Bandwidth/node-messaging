@@ -21,7 +21,7 @@ npm install @bandwidth/messaging
 
 ### Initialize
 
-```
+```js
 import { Client, ApiController, MessageRequest } from '@bandwidth/messaging';
 const client = new Client({
     basicAuthUserName: "username",
@@ -33,19 +33,19 @@ const accountId = "12345";
 ```
 
 ### Send A Text Message
-```
-var applicationId = "3-a-b-c";
-var toPhoneNumber = "+15554443333";
-var fromPhoneNumber = "+15553334444";
-var text = "Hello world";
-var body = {
+```js
+const applicationId = "3-a-b-c";
+const toPhoneNumber = "+15554443333";
+const fromPhoneNumber = "+15553334444";
+const text = "Hello world";
+const body = {
     applicationId: applicationId,
     to: [toPhoneNumber],
     from: fromPhoneNumber,
     text: text 
 };
 
-var createMessageResponse = await controller.createMessage(accountId, body);
+const createMessageResponse = await controller.createMessage(accountId, body);
 console.log(createMessageResponse.result.id);
 ```
 
