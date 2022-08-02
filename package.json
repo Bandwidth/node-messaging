@@ -42,7 +42,7 @@
   "dependencies": {
     "@apimatic/schema": "^0.6.0",
     "axios": "^0.21.4",
-    "detect-node": "^2.0.4",
+    "detect-node": "^2.1.0",
     "form-data": "^3.0.0",
     "json-bigint": "^1.0.0",
     "lodash.flatmap": "^4.5.0",
