@@ -1,4 +1,6 @@
 import { Client, ApiController, FileWrapper } from '../src';
+import { HttpClient } from '../src/http/httpClient';
+
 
 let controller;
 
@@ -10,6 +12,28 @@ beforeEach(() => {
 
     controller = new ApiController(client);
 });
+
+describe('http client', () => {
+    const httpClient = new HttpClient();
+    it('should throw error on unknown body type', async () => {
+        const httpRequest = {
+            body: {
+                type: "somethingmadeup"
+            }
+        };
+        expect(() => httpClient.convertHttpRequest(httpRequest)).toThrow("HTTP client encountered unknown body type 'somethingmadeup'. Could not execute HTTP request.");
+    });
+
+    it('should not throw error on known body type', async () => {
+        const httpRequest = {
+            body: {
+                type: "text"
+            }
+        };
+        expect(httpClient.convertHttpRequest(httpRequest)).toBeDefined();
+    });
+});
+
 
 describe('media', () => {
     it('should upload and download media', async () => {

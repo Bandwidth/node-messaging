@@ -13,20 +13,20 @@
  * @param name Header name
  * @param value Header value
  */
-export function setHeader(
-  headers: Record<string, string>,
+ export function setHeader(
+  headers: Record<string, string | number | boolean>,
   name: string,
-  value?: string
+  value?: string | number | boolean | undefined
 ): void {
   const realHeaderName = lookupCaseInsensitive(headers, name);
   setHeaderInternal(headers, realHeaderName, name, value);
 }
 
 function setHeaderInternal(
-  headers: Record<string, string>,
+  headers: Record<string, string | number | boolean | undefined>,
   realHeaderName: string | null,
   name: string,
-  value: string | undefined
+  value: string | number | boolean | undefined
 ): void {
   if (realHeaderName) {
     delete headers[realHeaderName];
@@ -46,9 +46,9 @@ function setHeaderInternal(
  * @param value Header value
  */
 export function setHeaderIfNotSet(
-  headers: Record<string, string>,
+  headers: Record<string, string | number | boolean>,
   name: string,
-  value?: string
+  value?: string | number | boolean | undefined
 ): void {
   const realHeaderName = lookupCaseInsensitive(headers, name);
   if (!realHeaderName) {
@@ -111,8 +111,8 @@ export function lookupCaseInsensitive(
  * @param headersToMerge Headers to set
  */
 export function mergeHeaders(
-  headers: Record<string, string>,
-  headersToMerge: Record<string, string>
+  headers: Record<string, string | number | boolean>,
+  headersToMerge: Record<string, string | number | boolean>
 ): void {
   const headerKeys: Record<string, string> = {};
 
