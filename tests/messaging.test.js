@@ -56,6 +56,16 @@ describe('messaging', () => {
         expect(createMessageResponse.result.from).toEqual(fromPhoneNumber);
         expect(createMessageResponse.result.text).toEqual(text);
     });
+
+    it('should get messages', async () => {
+        const accountId = process.env.BW_ACCOUNT_ID;
+        const phoneNumber = process.env.BW_NUMBER;
+
+        const listMessagesResponse = await controller.getMessages(accountId, undefined, phoneNumber);
+        expect(listMessagesResponse.result.messages[0].messageId.length).toEqual(29);
+        expect(listMessagesResponse.result.messages[0].accountId).toEqual(accountId);
+        expect(listMessagesResponse.result.messages[0].sourceTn).toEqual(phoneNumber);
+    });
     
 
     it('should throw an error on an invalid to number', async () => {
