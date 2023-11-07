@@ -48,6 +48,11 @@
     "lodash.flatmap": "^4.5.0",
     "tiny-warning": "^1.0.3"
   },
+  "jest": {
+    "moduleNameMapper": {
+      "axios": "axios/dist/node/axios.cjs"
+    }
+  },
   "bugs": {
     "email": "support@bandwidth.com"
   }
