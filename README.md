@@ -1,3 +1,7 @@
+# $${\color{orange}This \space package  \space has  \space been  \space deprecated}$$
+# Please use the new [node-sdk](https://github.com/Bandwidth/node-sdk)
+## The new package is on NPM as [bandwidth-sdk](https://www.npmjs.com/package/bandwidth-sdk) (`npm i bandwidth-sdk`)
+
 # Bandwidth Node Messaging SDK
 
 [![Test](https://github.com/Bandwidth/node-messaging/actions/workflows/test.yml/badge.svg)](https://github.com/Bandwidth/node-messaging/actions/workflows/test.yml)
