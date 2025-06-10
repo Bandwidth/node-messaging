@@ -16,7 +16,7 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ windows-2019, windows-2022, ubuntu-22.04, ubuntu-24.04 ]
+        os: [ windows-2022, windows-2024, ubuntu-22.04, ubuntu-24.04 ]
         node-version: ['12', '14', '16']
     steps:
     - name: Checkout
