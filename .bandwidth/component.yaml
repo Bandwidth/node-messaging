@@ -1,0 +1,14 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  schemaVersion: v1.0.0
+  name: node-messaging
+  description: Node SDK for Bandwidth Messaging
+  annotations:
+    github.com/project-slug: Bandwidth/node-messaging
+    organization: BW
+    costCenter: Development - Software Infra
+spec:
+  type: Service
+  owner: github/band-swi
+  lifecycle: Available
