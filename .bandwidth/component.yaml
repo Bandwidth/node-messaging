@@ -6,6 +6,7 @@ metadata:
   description: Node SDK for Bandwidth Messaging
   annotations:
     github.com/project-slug: Bandwidth/node-messaging
+    bandwidth.com/languages: Node.js
     organization: BW
     costCenter: Development - Software Infra
 spec:
